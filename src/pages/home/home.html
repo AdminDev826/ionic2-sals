@@ -1,0 +1,47 @@
+
+<ion-header style="float: left;">
+  <ion-navbar color="primary" style="text-align: center;float: left">
+    <ion-searchbar></ion-searchbar>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="home_content" style="background-color:gray; padding: 2px;" >
+
+   <ion-list>
+<ion-item style="height: 70px;">
+  <ion-fab left top style="width: 45px;height: 45px;margin-right: 10px;">
+    <button ion-fab color="light"><ion-icon name="arrow-dropright"></ion-icon></button>
+      <ion-fab-list side="right">
+          <button ion-fab><ion-icon name="logo-usd"></ion-icon></button>
+          <button ion-fab><ion-icon name="logo-yen"></ion-icon></button>
+          <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
+          <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
+          <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
+      </ion-fab-list>
+    </ion-fab>
+     </ion-item>
+
+     <!--<ion-item class="main" *ngFor ="let key  of keys" (click)="gotoNextPage(key.id)">
+          <img src="{{key.img_url}}">
+          <label style="color: green">{{key.cate_name}}</label>
+           <label style="color: blue">{{key.cate_ar_name}}</label>
+     </ion-item>-->
+   </ion-list>
+
+
+<ion-card class="home_card" *ngFor="let item of keys; let i = index" (click)="gotoNextPage(item.id);">
+  <ion-item class="late_header">
+    <h4> {{item.cate_name}}</h4>
+    <p>{{item.cate_ar_name}}</p>
+  </ion-item>
+
+
+  <ion-card-content>
+    <img  class="home_img" src="{{item.img_url}}"/>
+
+  </ion-card-content>
+</ion-card>
+
+
+
+</ion-content>

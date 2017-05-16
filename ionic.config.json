@@ -1,0 +1,11 @@
+{
+  "name": "sale",
+  "app_id": "",
+  "v2": true,
+  "typescript": true,
+
+  "proxies" : [
+    {
+      "path" : "/",
+      "proxyUrl" : ""}]
+}

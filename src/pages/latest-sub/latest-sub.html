@@ -1,0 +1,46 @@
+<!--//////////   SHOW DETAIL POSTS CONTENT WHEN CLICK EACH POST ITEM          2017/4 MADE BY ZHANG      -->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>latest_sub</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="sub_content" style="background-color:gray;border-radius:10%;">
+
+<ion-card style="background-color:bisque;border-radius:5%">
+
+  <ion-item style="background-color:bisque;border-radius:5%">
+    <ion-avatar item-left>
+      <img src="{{sub_url}}">
+    </ion-avatar>
+    <h2>{{sub_title}}</h2>
+    <p>{{sub_date}}</p>
+  </ion-item>
+
+  <img style="border-radius:10%; margin:1px; width:98%;" src="{{sub_url}}">
+
+  <ion-card-content>
+    <p>{{sub_content}}</p>
+  </ion-card-content>
+
+  <ion-row>
+    <ion-col>
+      <button ion-button icon-left clear small>
+        <ion-icon name="logo-usd"></ion-icon>
+        <div>{{sub_price}}</div>
+      </button>
+    </ion-col>
+    <ion-col>
+      <button ion-button icon-left clear small>
+        <ion-icon name="text"></ion-icon>
+        <div>4 Comments</div>
+      </button>
+    </ion-col>
+  </ion-row>
+
+</ion-card>
+
+</ion-content>

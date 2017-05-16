@@ -1,0 +1,74 @@
+
+<!--///////////////////////////////////////////////////////////////////MESSAGE AND CALL CLASS  2017/4 MADE BY ZHANG///////////////////////////////////////////////-->
+<ion-header>
+  <ion-navbar color="primary">
+    <!--<ion-title>More</ion-title>-->
+    <ion-searchbar>
+    </ion-searchbar>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <!--Region content-->
+    <ion-item round>
+       <ion-icon name = "globe" item-left></ion-icon>
+        <!--option content-->
+       <ion-label>Region</ion-label>
+
+        <ion-select [(ngModel)]="Region">
+            <ion-option value="f" selected="true">United States</ion-option>
+            <ion-option value="m">United Kingdom</ion-option>
+            <ion-option value="n">China</ion-option>
+        </ion-select>
+    </ion-item>
+
+
+<!--Language content-->
+    <ion-item>
+              <ion-icon name = "mic" item-left></ion-icon>
+        <!--option content-->
+       <ion-label>Language</ion-label>
+
+        <ion-select [(ngModel)]="Language">
+            <ion-option value="l_e" selected="true">English</ion-option>
+            <ion-option value="l_c">chinese</ion-option>
+            <ion-option value="l_s">spain</ion-option>
+        </ion-select>
+    </ion-item>
+
+<!--Account Login content-->
+    <ion-item>
+
+        <ion-icon name ="contact" item-left></ion-icon>
+        <ion-label>Account login</ion-label>
+    </ion-item>
+
+<!--Post ad content-->
+    <ion-item>
+        <ion-icon name ="ionitron" item-left></ion-icon>
+        <ion-label>Post ad</ion-label>
+    </ion-item>
+
+
+<!--favorite content-->
+    <ion-item>
+        <ion-icon name ="happy" item-left></ion-icon>
+        <ion-label>favorite</ion-label>
+    </ion-item>
+
+<!--contact us content-->
+    <ion-item>
+        <ion-icon name ="mail" item-left></ion-icon>
+        <ion-label>Contacts Us</ion-label>
+    </ion-item>
+
+<!--about us content-->
+    <ion-item>
+         <ion-icon name ="megaphone" item-left></ion-icon>
+        <ion-label>About Us</ion-label>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

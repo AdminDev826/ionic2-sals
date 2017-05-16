@@ -1,0 +1,41 @@
+page-about {
+
+.card_img
+{
+  width: 90%;
+  height: 60%;
+  margin-top: 10%;
+  margin-left:auto;
+  margin-right:auto;
+  border-radius: 5px;
+}
+
+.offer_content
+{
+  float: left;
+  margin: 0;
+  background-color: gray;
+  background-size: cover;
+}
+
+.offer_card
+{
+  width: 48%;
+  height: 50%;
+  margin: 1%;
+  border-radius: 10px;
+  background-color:bisque;
+  float: left;
+  // background-image: url('../../assets/img/back1.png');
+  // background-size: cover;
+}
+
+.offer_header
+{
+  border-radius: 10px;
+  background-color: burlywood;
+  // background-image: url('../../assets/img/back1.png');
+  // background-size: cover;
+}
+
+}
