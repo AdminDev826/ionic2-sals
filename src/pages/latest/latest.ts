@@ -7,7 +7,7 @@ import { MyDataModel } from './../../app/model/DataModel';
 import { ServerDataModel, ServerDataModelDelegate } from './../../app/model/ServerDataModel-helper';
 import { PostPage } from './../post/post';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 
 /*
   Generated class for the Latest page.
@@ -27,20 +27,34 @@ export class LatestPage implements ServerDataModelDelegate {
   serverData : any ;
   keys : Array<MyDataModel> = [];
   temp : any;
+  loaded = false;
+  loading: any;
+  refresher: any;
   /////////////////////////////
   public  postsDataArray : Array<PostDataModel> = new Array<PostDataModel>();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public datamodel:ServerDataModel) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public datamodel:ServerDataModel, private loadingCtrl: LoadingController) {
 
      this.navCtrl = navCtrl;
-    //  this.datamodel.GetPostProducts();
-    //  this.datamodel.homedelegate = this;
+     this.datamodel.GetPostProducts();
+     this.datamodel.homedelegate = this;
+    this.loading = loadingCtrl.create({
+      spinner: 'bubbles',
+      content: 'Loading Please Wait...'
+    });
+    this.loading.present();
   }
 
  ionViewWillEnter()
  {
-     this.datamodel.GetPostProducts();
-     this.datamodel.homedelegate = this;
+    //  this.datamodel.GetPostProducts();
+    //  this.datamodel.homedelegate = this;
+ }
+ doRefresh(refresher){
+    this.refresher = refresher;
+    this.loaded = true;
+    console.log(event);
+    this.datamodel.GetPostProducts();
  }
 
   onPageDidEnter() {
@@ -60,6 +74,11 @@ export class LatestPage implements ServerDataModelDelegate {
       this.temp = this.postsDataArray[index];
 
        this.keys.push(this.temp);
+    }
+    this.loading.dismiss();
+    if(this.loaded){
+      this.refresher.complete();
+      this.loaded = false;
     }
     // console.log("temp====>",this.keys)
   }

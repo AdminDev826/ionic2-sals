@@ -7,17 +7,21 @@
 
 <ion-content style="width:100%;height:100%; margin-top:5%;" >
 
-<ion-card style="background-color:bisque;border-radius:5% " >
+<ion-card style="background-color:bisque;border-radius:5%; text-align: center; " >
 
   <ion-item class="">
     <ion-label>select country</ion-label>
     <ion-select>
-      <ion-option ng-selected="selected">English</ion-option>
+      <ion-option ng-selected="selected">United State</ion-option>
+      <ion-option ng-selected="selected">Kuwait</ion-option>
+      <ion-option ng-selected="selected">Jordan</ion-option>
+      <ion-option ng-selected="selected">Ksa</ion-option>
     </ion-select>
   </ion-item>
 
-  <img style="border-radius:10%; margin:1px; width:98%;" src="{{splash_data.img_url}}">
-
+  <!--<img style="border-radius:10%; margin:1px; width:98%;" src="{{splash_data.img_url}}">-->
+  <img style="border-radius:10%; margin:1px; width:98%;" src="{{splash_data.img_url}}" (load)="loaded = true" [ngClass]="{'img-loaded':loaded}" [hidden]="!loaded" />
+  <ion-spinner name="bubbles" [ngClass]="{'center':true}" *ngIf="!loaded"></ion-spinner>
   <ion-card-content>
     <!--<p>{{sub_content}}</p>-->
   </ion-card-content>

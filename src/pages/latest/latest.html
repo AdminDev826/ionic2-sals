@@ -41,12 +41,23 @@
 
 <ion-content class="late_content">
 
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
 <ion-card class="late_card" *ngFor="let item of keys; let i = index" (click)="click_card(i);">
   <!--<ion-item class="late_header">
     <h2> {{item.post_title}}</h2>
   </ion-item>-->
 
-  <img  class="late_img" src="{{item.post_img_url}}"/>
+  <!--<img  class="late_img" src="{{item.post_img_url}}"/>-->
+  <img class="late_img" src="{{item.post_img_url}}" (load)="loaded = true" [ngClass]="{'img-loaded':loaded}" [hidden]="!loaded" />
+  <ion-spinner name="bubbles" [ngClass]="{'center':true}" *ngIf="!loaded"></ion-spinner>
   <ion-card-content>
     <!--<p style="color:black;">{{item.post_des}}</p>-->
   </ion-card-content>
