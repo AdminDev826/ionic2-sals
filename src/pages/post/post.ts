@@ -6,6 +6,9 @@ import { WantedPage } from './../wanted/wanted';
 import { Component } from '@angular/core';
 import { NavController, NavParams, ActionSheetController, ToastController, Platform, LoadingController, Loading } from 'ionic-angular';
 import * as $ from 'jquery';
+import 'rxjs/add/operator/map';
+
+
 declare var cordova : any;
 /*
   Generated class for the Post page.
@@ -191,8 +194,17 @@ public pathForImage(img) {
         fileName: filename,
         chunkedMode: false,
         mimeType: "multipart/form-data",
-        params : {'fileName': filename,'title':this.post_title,'price':this.post_price,'content':this.post_desc,'category_id':Global.Static_category_id}
+        params : {
+          'fileName': filename,
+          'title':this.post_title,
+          'price':this.post_price,
+          'content':this.post_desc,
+          'category_id':Global.Static_category_id,
+          'profile': Global.profile_id,
+          'Country': Global.selected_country
+        }
       };
+      console.log(options);
 
       const fileTransfer = new Transfer();
 
@@ -201,10 +213,19 @@ public pathForImage(img) {
       });
       this.loading.present();
       // Use the FileTransfer to upload the image
+
       fileTransfer.upload(targetPath, url, options).then(data => {
-        this.loading.dismissAll()
-        console.log("uploadeddata==>",data);
-        this.presentToast('succesful uploaded.');
+        this.loading.dismissAll();
+        console.log("uploadeddata==>",data.response);
+        let strData = JSON.parse(data.response);
+        console.log(strData.status);
+        if(strData.item[0]){
+          this.presentToast('succesful uploaded.');
+          this.navCtrl.pop();
+        }else{
+          this.presentToast("You can not upload post . your free post limit reached. please contact admin to add more post");
+        }
+
       }, err => {
         this.loading.dismissAll()
         this.presentToast('Error while uploading file.');

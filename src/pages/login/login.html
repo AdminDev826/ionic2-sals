@@ -1,0 +1,19 @@
+
+<ion-content class="content" padding>
+    <ion-row style="margin-top:40%">
+      <ion-item>
+        <ion-input type="number" placeholder="+965  Mobile Number" required [(ngModel)]="phoneNumber"></ion-input>
+      </ion-item>
+    </ion-row>
+    <ion-row style="margin-top: 10px;">
+      <button ion-button full (click)="login()">LOGIN</button>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <button color="danger" ion-button full (click)="skip()">SKIP LOGIN</button>
+      </ion-col>
+      <ion-col col-6>
+        <button color="normal" ion-button full (click)="goBack()">BACK</button>
+      </ion-col>
+    </ion-row>
+</ion-content>

@@ -9,15 +9,16 @@
 
   <ion-list>
     <ion-item id="parent_item" *ngFor="let item of keys; let i = index">
-     <img style="width: 100px; height: 100px;" src="{{item.img_url}}">
-     <label style="color: black;text-align: center;size: 20px;"  text-wrap>{{item.cate_name}}</label>
-
+      <div class="title">
+        <img class="title-image" src="{{item.img_url}}">
+        <label class="title-text"  text-wrap>{{item.cate_name}}</label>
+      </div>
       <ion-item-group >
         <ion-scroll scrollX="true"style="height: 160px;" class="scroll_content">
-              <button  *ngFor="let item1 of keys_sub[i]; let button_index = index"  style="width: 100px; height: 140px; margin-left: 10px;border-radius: 10px;background-color: gray;" (click)="clickItem(i,button_index);" id="Location{{i}}{{button_index}}">
+              <button *ngFor="let item1 of keys_sub[i]; let button_index = index"  class="btn-item" (click)="clickItem(i,button_index);" id="Location{{i}}{{button_index}}">
 
-                <img style="width: 80px; height: 80px; float: left" src="{{item1.image_file}}">
-                <label style="color: black;float: left" text-wrap>{{item1.name}}</label>
+                <img class="item-image" src="{{item1.image_file}}">
+                <label class="item-label" text-wrap>{{item1.name}}</label>
 
               </button>
         </ion-scroll>

@@ -1,9 +1,9 @@
 import { TabsPage } from '../tabs/tabs';
 import { OfferDataModel } from './../../app/model/OfferModel';
+import { Global } from "./../../app/model/global";
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
- import { ServerDataModel, ServerDataModelDelegate } from './../../app/model/ServerDataModel-helper';
+import { ServerDataModel, ServerDataModelDelegate } from './../../app/model/ServerDataModel-helper';
 /*
   Generated class for the Splash page.
 
@@ -21,6 +21,8 @@ export class SplashPage {
 
   splash_data : Array<OfferDataModel> = [];
   temp : any;
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams,public datamodel:ServerDataModel) {}
 
   ionViewDidLoad() {
@@ -37,6 +39,7 @@ export class SplashPage {
   {
        this.putdata  = [];
        this.putdata = data;
+      //  this.splash_data = data;
        var temp = this.putdata.length;
        var test  = Math.random() % temp ;
        var intvalue = Math.trunc( test );

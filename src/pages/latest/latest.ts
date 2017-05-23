@@ -7,7 +7,10 @@ import { MyDataModel } from './../../app/model/DataModel';
 import { ServerDataModel, ServerDataModelDelegate } from './../../app/model/ServerDataModel-helper';
 import { PostPage } from './../post/post';
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ToastController, AlertController } from 'ionic-angular';
+import { Global } from './../../app/model/global';
+import { LoginPage } from "../login/login";
+
 
 /*
   Generated class for the Latest page.
@@ -33,17 +36,56 @@ export class LatestPage implements ServerDataModelDelegate {
   /////////////////////////////
   public  postsDataArray : Array<PostDataModel> = new Array<PostDataModel>();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public datamodel:ServerDataModel, private loadingCtrl: LoadingController) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public datamodel:ServerDataModel, 
+    private loadingCtrl: LoadingController, 
+    private toastCtrl: ToastController,
+    private alertCtrl: AlertController
+    ) {
 
-     this.navCtrl = navCtrl;
-     this.datamodel.GetPostProducts();
-     this.datamodel.homedelegate = this;
-    this.loading = loadingCtrl.create({
-      spinner: 'bubbles',
-      content: 'Loading Please Wait...'
-    });
-    this.loading.present();
+       this.navCtrl = navCtrl;
+       this.datamodel.GetPostProducts();
+       this.datamodel.homedelegate = this;
+       this.loading = loadingCtrl.create({
+         spinner: 'bubbles',
+         content: 'Loading Please Wait...'
+       });
+       this.loading.present();
   }
+
+  presentAlert(title) {
+    let alert = this.alertCtrl.create({
+      title: 'SALE',
+      subTitle: title,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Ok',
+          handler: () => {
+            
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  private presentToast(text) {
+  let toast = this.toastCtrl.create({
+    message: text,
+    duration: 3000,
+    position: 'top'
+  });
+  toast.present();
+}
 
  ionViewWillEnter()
  {
@@ -96,12 +138,58 @@ export class LatestPage implements ServerDataModelDelegate {
   // }
   goPostWnatedThing()
   {
-    this.navCtrl.push(PostwantedthingPage);
+    if(Global.profile_id.length < 1){
+      let alert = this.alertCtrl.create({
+        title: 'SALE',
+        subTitle: "You have to login forst to be able to post ad.",
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked');
+            }
+          },
+          {
+            text: 'Ok',
+            handler: () => {
+              this.navCtrl.push(LoginPage);
+            }
+          }
+        ]
+      });
+      alert.present();
+    }else{
+      this.navCtrl.push(PostwantedthingPage);
+    }
   }
 
   goPostPage()
   {
-    this.navCtrl.push(PostPage);
+    if(Global.profile_id.length < 1){
+      let alert = this.alertCtrl.create({
+        title: 'SALE',
+        subTitle: "You have to login forst to be able to post ad.",
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked');
+            }
+          },
+          {
+            text: 'Ok',
+            handler: () => {
+              this.navCtrl.push(LoginPage);
+            }
+          }
+        ]
+      });
+      alert.present();
+    }else{
+      this.navCtrl.push(PostPage);
+    }
   }
 
   click_card(i)

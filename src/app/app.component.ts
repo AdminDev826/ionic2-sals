@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { Platform, Events } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { TabsPage } from '../pages/tabs/tabs';
+import { FirstPage } from "../pages/first/first";
 
 
 @Component({
@@ -12,9 +13,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 })
 export class MyApp {
 
-  // rootPage = TabsPage;
-  rootPage = SplashPage;
-   providers: [Service]
+  rootPage = FirstPage;
+  providers: [Service]
 
   constructor(platform: Platform,events:Events) {
     platform.ready().then(() => {

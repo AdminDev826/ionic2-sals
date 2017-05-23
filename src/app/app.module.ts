@@ -17,6 +17,8 @@ import {MorePage} from '../pages/more/more';
 import{DetailPage} from '../pages/detail/detail';
 import{WantedPage} from '../pages/wanted/wanted';
 import { TabsPage } from '../pages/tabs/tabs';
+import { FirstPage } from "../pages/first/first";
+import { LoginPage } from "../pages/login/login";
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { TabsPage } from '../pages/tabs/tabs';
     PostwantedthingPage,
     LatestSubPage,
     SplashPage,
-    TabsPage
+    TabsPage,
+    FirstPage,
+    LoginPage
   ],
   imports: [
     IonicModule.forRoot(MyApp,{
@@ -57,7 +61,9 @@ import { TabsPage } from '../pages/tabs/tabs';
     PostwantedthingPage,
     LatestSubPage,
     SplashPage,
-    TabsPage
+    TabsPage,
+    FirstPage,
+    LoginPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},[Service]],
 })

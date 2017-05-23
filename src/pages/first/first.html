@@ -1,0 +1,33 @@
+<ion-content padding class="content">
+
+  <ion-row style="margin-top:40%">
+    <ion-col text-center col-4>
+      <div [class.border]="selected_country[0]" (click)="selectedCountry(0)">
+        <img src="assets/img/Flag_Kuwait.png" alt="">
+      </div>
+    </ion-col>
+    <ion-col text-center col-4>
+      <div [class.border]="selected_country[1]" (click)="selectedCountry(1)">
+         <img src="assets/img/Flag_Ksa.png" alt="">
+      </div>
+    </ion-col>
+    <ion-col text-center col-4>
+      <div [class.border]="selected_country[2]" (click)="selectedCountry(2)">
+        <img src="assets/img/Flag_Jordan.png" alt="">
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col text-center col-6>
+      <button ion-button outline [class.selected]="isEnglish" (click)="selected(0)">English</button>
+    </ion-col>
+    <ion-col text-center col-6>
+      <button ion-button outline [class.selected]="isArabic" (click)="selected(1)">عربى</button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col text-center>
+      <button style="width:50%;" ion-button outline (click)="gotoLogin();">CONTINUE</button>
+    </ion-col>
+  </ion-row>
+</ion-content>

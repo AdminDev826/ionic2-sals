@@ -4,6 +4,9 @@ export class Global
 {
   static Static_category    = "Choose Category";
   static Static_category_id = "";
+  static selected_country = "Kuwait";
+  static selected_language = "English";
+  static profile_id = "";
   constructor()
   {
 

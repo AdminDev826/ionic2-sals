@@ -1,5 +1,5 @@
 import { OfferDataModel } from './OfferModel';
-// import { Global } from './global';
+import { Global } from './global';
 import { TreeModel } from './TreeDataModel';
 import { PostDataModel } from './PostDataModel';
 import { Http } from '@angular/http';
@@ -77,12 +77,15 @@ ionViewWillEnter()
    GetPostProducts()
    {
 
-       var temp_array = new Array<PostDataModel>();
+        var temp_array = new Array<PostDataModel>();
         var temp_url = 'http://sale4allz.com/ws/get_user_posts.php';
         // var data = JSON.stringify({'parent_id':nextid});
 //////////////////////////very important/////////////////////////////////
         var Form_data = new FormData();
-        Form_data.append('profile_id',0);
+        Form_data.append('profile_id', Global.profile_id);
+        Form_data.append('country', Global.selected_country);
+
+        console.log(Global.selected_country + "--------- selected_country");
 //////////////////////////////////////////////////////////////////////////
         this._http.post(temp_url,Form_data).map(res =>res.json())
         .subscribe(res => {
@@ -131,6 +134,10 @@ GetOfferPost()
       var temp_array = new Array<OfferDataModel>();
       var send_data = new FormData();
       send_data.append('lang','en');
+      send_data.append('country', Global.selected_country);
+      send_data.append('profile', Global.profile_id);
+
+      console.log(Global.profile_id + "--------- profile_id");
 
       this._http.post(temp_url,send_data).map(res =>res.json())
         .subscribe(res => {
